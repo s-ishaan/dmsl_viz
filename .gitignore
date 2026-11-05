@@ -1,0 +1,39 @@
+# Python Virtual Environments
+.venv/
+venv/
+ENV/
+env/
+env.bak/
+venv.bak/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Antigravity & Agent artifacts
+.gemini/
+
+# Slide decks & large binaries
+*.pdf
+*.zip
+*.tar.gz
+
+# IDE and Editor configurations
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Testing & Logs
+.pytest_cache/
+.coverage
+htmlcov/
+*.log
