@@ -39,10 +39,10 @@ def get_base_2d_figure(
     fig = go.Figure()
     
     top_margin = 40 if title else 15
-    bottom_margin = 75 if show_legend else 35
+    bottom_margin = 85 if show_legend else 35
 
     layout_kwargs = dict(
-        margin=dict(l=45, r=25, t=top_margin, b=bottom_margin),
+        margin=dict(l=40, r=20, t=top_margin, b=bottom_margin),
         height=height,
         paper_bgcolor=BG_PAPER,
         plot_bgcolor=BG_PLOT,
@@ -53,7 +53,7 @@ def get_base_2d_figure(
             zerolinewidth=1.2,
             gridcolor=GRID_COLOR,
             gridwidth=1,
-            tickfont=dict(color="#94A3B8", size=10),
+            tickfont=dict(color="#94A3B8", size=9.5),
             title=dict(text="Feature x₁", font=dict(color="#CBD5E1", size=11)) if show_axes_labels else None,
         ),
         yaxis=dict(
@@ -63,7 +63,7 @@ def get_base_2d_figure(
             zerolinewidth=1.2,
             gridcolor=GRID_COLOR,
             gridwidth=1,
-            tickfont=dict(color="#94A3B8", size=10),
+            tickfont=dict(color="#94A3B8", size=9.5),
             title=dict(text="Feature x₂", font=dict(color="#CBD5E1", size=11)) if show_axes_labels else None,
             scaleanchor="x",
             scaleratio=1,
@@ -78,7 +78,7 @@ def get_base_2d_figure(
             bgcolor="rgba(15, 23, 42, 0.75)",
             bordercolor="#334155",
             borderwidth=1,
-            font=dict(color="#CBD5E1", size=10, family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"),
+            font=dict(color="#CBD5E1", size=9.5, family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"),
         ) if show_legend else None,
         hoverlabel=dict(
             bgcolor="#1E293B",
