@@ -1,10 +1,12 @@
 # 📐 Statistical Learning Visualizer (DMSL Sandbox)
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://streamlit.io/)
+[![Live Demo](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://dmslsandbox.streamlit.app/)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
+> **Live Application**: 🚀 [https://dmslsandbox.streamlit.app/](https://dmslsandbox.streamlit.app/)
+>
 > **An interactive, extensible visual laboratory for statistical learning theory.** Built with Python, Streamlit, and Plotly to provide real-time geometric and mathematical intuition for core machine learning models, optimization landscapes, and regularization mechanics.
 
 ---
