@@ -97,19 +97,19 @@ def render():
 
     with col_main:
         tab_dual, tab_sweep = st.tabs([
-            "🪞 Slide 226 Dual Comparison (C=10000 vs C=0.01)",
+            "🪞 Dual Comparison (High C vs Low C)",
             "🎛️ Continuous Sweep & Response Curves"
         ])
 
-        # TAB 1: Slide 226 Direct Dual Comparison
+        # TAB 1: Direct Dual Comparison
         with tab_dual:
             res_high = fit_and_eval_svm(X_train, y_train, X_test, y_test, 10000.0)
             res_low = fit_and_eval_svm(X_train, y_train, X_test, y_test, 0.01)
 
             subtab_high, subtab_low, subtab_both = st.tabs([
-                "⬅️ Left Panel: C = 10000 (Narrow Margin)",
-                "➡️ Right Panel: C = 0.01 (Wide Margin)",
-                "📑 Both Panels Stacked (Full Width)",
+                "⬅️ High C = 10000 (Narrow Margin)",
+                "➡️ Low C = 0.01 (Wide Margin)",
+                "📑 Both Models Stacked (Full Width)",
             ])
 
             with subtab_high:
@@ -120,7 +120,7 @@ def render():
                     m3.metric("Support Points %", f"{res_high['sv_pct']:.0f}% ({res_high['n_sv']}/{len(y_train)})")
                     m4.metric("Test Error", f"{res_high['test_err']:.3f}")
 
-                st.markdown("##### 🪞 Slide 226 Left Panel: Large C = 10000 (Narrow Margin, Low SV Count)")
+                st.markdown("##### 🪞 High C = 10000 (Narrow Margin, Few Support Vectors)")
                 fig_h = get_base_2d_figure((x_min, x_max), (y_min, y_max), title="", height=450)
                 fig_h = add_scatter_points(fig_h, X_train, y_train, marker_size=9, show_legend=True)
                 fig_h = add_linear_boundary_and_margins(
@@ -143,7 +143,7 @@ def render():
                     m3.metric("Support Points %", f"{res_low['sv_pct']:.0f}% ({res_low['n_sv']}/{len(y_train)})")
                     m4.metric("Test Error", f"{res_low['test_err']:.3f}")
 
-                st.markdown("##### 🪞 Slide 226 Right Panel: Small C = 0.01 (Wide Margin, High SV Count)")
+                st.markdown("##### 🪞 Low C = 0.01 (Wide Margin, High Support Vector Count)")
                 fig_l = get_base_2d_figure((x_min, x_max), (y_min, y_max), title="", height=450)
                 fig_l = add_scatter_points(fig_l, X_train, y_train, marker_size=9, show_legend=True)
                 fig_l = add_linear_boundary_and_margins(

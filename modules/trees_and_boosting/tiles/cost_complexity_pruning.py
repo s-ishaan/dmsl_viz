@@ -34,7 +34,7 @@ def render():
                 ["One-Standard-Error Rule ('se')", "Smallest CV Error Rule ('min')", "Manual α Slider"],
                 index=0,
                 key="ccp_rule",
-                help="Rule for choosing best tree size (Slide 275 & 278). 'se' picks the simplest tree within 1 SE of minimum CV error.",
+                help="Rule for choosing best tree size. 'se' picks the simplest tree within 1 SE of minimum CV error.",
             )
 
             dataset_type = st.selectbox(
@@ -145,13 +145,13 @@ def render():
             m4.metric("Rule Applied", "1-SE Rule" if "One-Standard" in selection_rule else ("Min CV Error" if "Smallest" in selection_rule else "Manual"))
 
         tab_cv, tab_boundary, tab_compare = st.tabs([
-            "📉 Cost-Complexity CV Error Curve (Slide 278 Replica)",
+            "📉 Cost-Complexity CV Error Curve",
             "🗺️ Pruned 2D Decision Boundary (Size |T_α|)",
             "⚖️ Full Overfitted Tree vs Pruned Subtree",
         ])
 
         with tab_cv:
-            st.markdown("##### 📊 10-Fold Cross-Validation vs Tree Size |T_α| & Penalty α (Slide 278)")
+            st.markdown("##### 📊 10-Fold Cross-Validation vs Tree Size |T_α| & Penalty α")
 
             fig_cv = go.Figure()
 
@@ -174,7 +174,7 @@ def render():
                     x=tree_sizes,
                     y=mean_cv_errors,
                     mode="lines+markers",
-                    name="CV Error (Blue - Slide 278)",
+                    name="10-Fold CV Error",
                     line=dict(color="#38BDF8", width=2.5),
                     marker=dict(size=6, color="#38BDF8"),
                     error_y=dict(type="data", array=std_cv_errors, visible=True, color="rgba(56, 189, 248, 0.5)"),
@@ -189,7 +189,7 @@ def render():
                     x=tree_sizes,
                     y=train_errors,
                     mode="lines+markers",
-                    name="Training Error (Orange - Slide 278)",
+                    name="Training Error",
                     line=dict(color="#F59E0B", width=2.2, dash="dash"),
                     marker=dict(size=5, color="#F59E0B"),
                     hovertemplate="Tree Size: %{x}<br>Train Error: %{y:.3f}<extra></extra>",

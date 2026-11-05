@@ -36,7 +36,7 @@ def render():
                 value=0.10,
                 step=0.05,
                 key="ti_perturb",
-                help="Fraction of data randomly perturbed/dropped to simulate sampling variation (Slide 280).",
+                help="Fraction of data randomly perturbed/dropped to simulate sampling variation.",
             )
 
             resample_seed = st.slider(

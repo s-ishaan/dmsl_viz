@@ -1,6 +1,5 @@
 """
 Module Page: Decision Trees, Pruning & AdaBoost Ensemble Learning
-ISYE-7406 Data Mining & Statistical Learning (Slides 260-289)
 Senior Data Presentation Architecture: 6 Dedicated Conceptual Tabs, Each with Full-Block Visualizations.
 """
 
@@ -17,7 +16,7 @@ from .tiles import (
 
 def render():
     st.title("Decision Trees, Pruning & AdaBoost Ensemble Learning")
-    st.caption("ISYE-7406 Slide Deck Module | Slides 260–289 | Real-Time Interactive Visual Sandbox")
+    st.caption("Recursive Partitioning, Cost-Complexity Pruning & Sequential Committee Learning")
 
     tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
         "🗺️ 1. Recursive Binary Splitting",

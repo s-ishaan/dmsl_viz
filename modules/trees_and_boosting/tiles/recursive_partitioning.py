@@ -30,7 +30,7 @@ def render():
 
             mode = st.radio(
                 "Model Task",
-                ["Regression Tree (Slide 262)", "Classification Tree (Slide 268)"],
+                ["Regression Tree (Continuous)", "Classification Tree (Discrete)"],
                 index=0,
                 key="rp_mode",
                 help="Switch between continuous piecewise constant regression and discrete regional classification.",
@@ -53,7 +53,7 @@ def render():
                 value=10,
                 step=1,
                 key="rp_splitmin",
-                help="Minimum number of samples required to split an internal node (MATLAB splitmin, Slide 271).",
+                help="Minimum number of samples required to split an internal node (splitmin threshold).",
             )
 
             if "Regression" in mode:
@@ -114,12 +114,12 @@ def render():
 
         tab_2d, tab_3d, tab_tree = st.tabs([
             "🗺️ 2D Axis-Aligned Space Partitioning",
-            "🧊 3D Piecewise Constant Surface (Slide 262)",
+            "🧊 3D Piecewise Constant Surface",
             "🌳 Hierarchical Decision Rules",
         ])
 
         with tab_2d:
-            st.markdown(f"##### 📐 2D Decision Partition: J = {n_leaves} Disjoint Rectangles (Slide 268)")
+            st.markdown(f"##### 📐 2D Decision Partition: J = {n_leaves} Disjoint Rectangles")
 
             fig_2d = get_base_2d_figure((x_min, x_max), (y_min, y_max), title="", height=460)
 
@@ -194,7 +194,7 @@ def render():
             st.plotly_chart(fig_2d, width="stretch", key="rp_fig_2d")
 
         with tab_3d:
-            st.markdown("##### 🧊 Piecewise Constant Surface: f̂(x) = ∑ c_j · I(x ∈ R_j) (Slide 262)")
+            st.markdown("##### 🧊 Piecewise Constant Surface: f̂(x) = ∑ c_j · I(x ∈ R_j)")
 
             fig_3d = go.Figure()
 
@@ -245,4 +245,4 @@ def render():
             feature_names = ["Feature x₁", "Feature x₂"]
             tree_text = export_text(model, feature_names=feature_names, max_depth=5)
             st.code(tree_text, language="text")
-            st.caption("Each branch represents an axis-aligned conditional cut: {x | x_j <= s} vs {x | x_j > s} (Slide 265).")
+            st.caption("Each branch represents an axis-aligned conditional cut: {x | x_j <= s} vs {x | x_j > s}.")

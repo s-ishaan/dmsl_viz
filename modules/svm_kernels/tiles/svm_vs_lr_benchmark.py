@@ -40,21 +40,21 @@ def render():
             preset = st.radio(
                 "Benchmark Preset",
                 [
-                    "Slide 258: Degree-4 Polynomial (C = 1.0)",
-                    "Slide 259: Radial Basis Kernel γ = 1.0 (C = 1.0)",
+                    "Degree-4 Polynomial (C = 1.0)",
+                    "Radial Basis Kernel γ = 1.0 (C = 1.0)",
                     "Custom Hyperparameters",
                 ],
                 index=0,
                 key="blr_preset",
-                help="Pre-configured models replicating Slides 258 and 259.",
+                help="Pre-configured models benchmarking polynomial and RBF kernels.",
             )
 
-            if preset.startswith("Slide 258"):
+            if preset.startswith("Degree-4"):
                 kernel_choice = "poly"
                 degree_val = 4
                 gamma_val = "scale"
                 c_val = 1.0
-            elif preset.startswith("Slide 259"):
+            elif preset.startswith("Radial Basis"):
                 kernel_choice = "rbf"
                 degree_val = 3
                 gamma_val = 1.0

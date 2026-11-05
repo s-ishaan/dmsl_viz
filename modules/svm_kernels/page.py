@@ -1,6 +1,5 @@
 """
 Module Page: Support Vector Machines (Nonlinear Decision Boundaries, Kernels & RKHS)
-ISYE-7406 Data Mining & Statistical Learning (Slides 227-259)
 Senior Data Presentation Architecture: 6 Dedicated Conceptual Tabs, Each with Full-Block Visualizations.
 """
 
@@ -17,12 +16,12 @@ from .tiles import (
 
 def render():
     st.title("Support Vector Machines: Kernels, RKHS & Regularization")
-    st.caption("ISYE-7406 Slide Deck Module | Slides 227–259 | Real-Time Interactive Visual Sandbox")
+    st.caption("Non-linear Decision Boundaries, RKHS Mercer Spectra & Loss Function Landscapes")
 
     tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
         "📐 1. Polynomial Kernel Dynamics",
         "🌐 2. RBF Kernel & Localization",
-        "📊 3. Kernel Regression (Slide 233)",
+        "📊 3. Localized Kernel Regression",
         "🔥 4. Gram Matrix & Mercer Spectrum",
         "🎯 5. Loss Function Arena (ESL)",
         "⚖️ 6. SVM vs KLR Benchmark",

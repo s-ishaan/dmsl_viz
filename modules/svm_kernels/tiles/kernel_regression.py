@@ -48,7 +48,7 @@ def render():
 
             kernel_type = st.radio(
                 "Kernel Function k_λ(x₀, x)",
-                ["Epanechnikov Quadratic (Slide 233)", "Gaussian / RBF"],
+                ["Epanechnikov Quadratic", "Gaussian / RBF"],
                 index=0,
                 key="kr_kernel_type",
                 help="Weighting kernel shape. Epanechnikov has compact support on [x₀ - λ, x₀ + λ].",
@@ -71,7 +71,7 @@ def render():
                 value=0.20,
                 step=0.02,
                 key="kr_lambda",
-                help="Kernel bandwidth parameter λ (half-width of window). Slide 233 uses λ = 0.20.",
+                help="Kernel bandwidth parameter λ (half-width of window). Default is λ = 0.20.",
             )
 
             with st.expander("⚙️ Synthetic Data Settings", expanded=False):
@@ -110,7 +110,7 @@ def render():
             m4.metric("Empirical MSE", f"{mse:.3f}")
 
         tab_main, tab_weights = st.tabs([
-            "📊 Localized Kernel Average f̂(x₀) (Slide 233 Replica)",
+            "📊 Localized Kernel Average f̂(x₀)",
             "⚖️ Normalized Weights wᵢ(x₀) Across Observations",
         ])
 

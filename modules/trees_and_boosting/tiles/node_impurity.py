@@ -36,7 +36,7 @@ def render():
                 value=0.35,
                 step=0.01,
                 key="ni_p_probe",
-                help="Proportion p = p̂_j1 of class +1 in a binary node (Slide 270).",
+                help="Proportion p = p̂_j1 of class +1 in a binary node.",
             )
 
             criterion = st.selectbox(
@@ -112,7 +112,7 @@ def render():
         ])
 
         with tab_curves:
-            st.markdown("##### 📐 Node Impurity Comparison: Gini vs Scaled Entropy vs 0-1 Error (Slide 270)")
+            st.markdown("##### 📐 Node Impurity Comparison: Gini vs Scaled Entropy vs 0-1 Error")
 
             p_axis = np.linspace(0.001, 0.999, 300)
             gini_curve = 2.0 * p_axis * (1.0 - p_axis)

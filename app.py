@@ -178,19 +178,19 @@ def main():
     modules = get_available_modules()
 
     with st.sidebar:
-        st.markdown("### 📐 DMSL Sandbox")
-        st.caption("Data Mining & Statistical Learning (ISYE-7406)")
+        st.markdown("### 📐 Statistical Learning Lab")
+        st.caption("Interactive Machine Learning & Statistical Theory Sandbox")
 
         st.markdown("---")
-        st.markdown("**Course Modules**")
+        st.markdown("**Learning Modules**")
         module_keys = list(modules.keys())
         module_titles = [modules[k]["title"] for k in module_keys]
 
         selected_title = st.selectbox(
-            "Select Course Module",
+            "Select Learning Module",
             module_titles,
             index=0,
-            help="Switch between parsed lecture deck visualizers",
+            help="Switch between statistical learning visualizers",
             label_visibility="collapsed",
         )
 
@@ -198,15 +198,13 @@ def main():
         selected_mod = modules[selected_key]
 
         st.markdown("---")
-        st.markdown(f"**Course:** `{selected_mod['course']}`")
-        st.markdown(f"**Deck Reference:** `{selected_mod['slides_ref']}`")
-        st.markdown(f"**Active Module ID:** `{selected_key}`")
+        st.markdown(f"**Focus:** `{selected_mod.get('topic', 'Statistical Learning')}`")
+        st.markdown(f"**Module ID:** `{selected_key}`")
 
         st.markdown("---")
         st.info(
-            "💡 **Extensible Workspace Architecture**\n\n"
-            "Drop new slide decks into this workspace. "
-            "Antigravity will parse them and add a new interactive page to this sidebar."
+            "💡 **Extensible Architecture**\n\n"
+            "Modular registry design allowing new statistical learning algorithms and interactive visualizers to be plugged in seamlessly."
         )
 
     # Render selected module page

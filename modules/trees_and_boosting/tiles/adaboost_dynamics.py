@@ -76,7 +76,7 @@ def render():
                 value=15,
                 step=5,
                 key="ab_total_m",
-                help="Total ensemble size M (Slide 285).",
+                help="Total ensemble size M.",
             )
 
             current_step = st.slider(
@@ -91,7 +91,7 @@ def render():
 
             base_depth = st.radio(
                 "Weak Learner Complexity",
-                ["Decision Stump (Depth 1 - Slide 289)", "Shallow Tree (Depth 2)"],
+                ["Decision Stump (Depth 1)", "Shallow Tree (Depth 2)"],
                 index=0,
                 key="ab_depth",
                 help="Stumps are single-split orthogonal axis cuts.",
@@ -218,7 +218,7 @@ def render():
             )
 
             st.plotly_chart(fig_w, width="stretch", key="ab_fig_w")
-            st.caption("Larger circles highlight instances previously misclassified, forcing stump G_m to prioritize them (Slide 286).")
+            st.caption("Larger circles highlight instances previously misclassified, forcing stump G_m to prioritize them.")
 
         with tab_ensemble:
             st.markdown(f"##### 🛡️ Cumulative Ensemble Boundary: G(x) = sign(∑ₖ₌₁ᵐ αₖ Gₖ(x)) (m = {current_step})")

@@ -22,9 +22,9 @@ from utils.plotting import (
 )
 
 
-def generate_slide289_dataset(n_train=600, n_test=1200, random_state=42):
+def generate_10d_sphere_dataset(n_train=600, n_test=1200, random_state=42):
     """
-    Generate the 10-dimensional simulation from Slide 289:
+    Generate the 10-dimensional simulation:
     X ~ N(0, I_10)
     Y = 1 if sum(X_j^2) > chi2_10(0.5) = 9.34, else -1.
     """
@@ -48,13 +48,13 @@ def render():
             sim_dataset = st.radio(
                 "Benchmark Experiment",
                 [
-                    "Slide 289 10D Sphere Simulation (Exact Replica)",
+                    "10D Sphere Simulation (Spherical Boundary)",
                     "2D Concentric Circles (Visualizable Boundary)",
                     "2D XOR Checkerboard",
                 ],
                 index=0,
                 key="bm_dataset",
-                help="Slide 289 tests 10 standard normal variables with spherical Chi-squared boundary.",
+                help="Tests 10 standard normal variables with spherical Chi-squared boundary.",
             )
 
             max_iters = st.slider(
@@ -64,7 +64,7 @@ def render():
                 value=120,
                 step=20,
                 key="bm_max_m",
-                help="Number of sequential boosting iterations M (Slide 290 plots up to M=400).",
+                help="Number of sequential boosting iterations M.",
             )
 
             deep_tree_depth = st.slider(
@@ -74,7 +74,7 @@ def render():
                 value=9,
                 step=1,
                 key="bm_deep_depth",
-                help="Simulates the 244-node complex decision tree from Slide 289.",
+                help="Simulates an unpruned complex decision tree.",
             )
 
             with st.expander("⚙️ Simulation Size", expanded=False):
@@ -82,8 +82,8 @@ def render():
                 n_test = st.slider("Testing Samples", 500, 2000, 1000, 250, key="bm_ntest")
 
     # Generate data
-    if sim_dataset.startswith("Slide 289"):
-        X_train, y_train, X_test, y_test = generate_slide289_dataset(n_train=n_train, n_test=n_test, random_state=42)
+    if sim_dataset.startswith("10D Sphere"):
+        X_train, y_train, X_test, y_test = generate_10d_sphere_dataset(n_train=n_train, n_test=n_test, random_state=42)
         is_2d = False
     else:
         is_2d = True
@@ -121,19 +121,19 @@ def render():
     with col_plot:
         with st.container(border=True):
             m1, m2, m3, m4 = st.columns(4)
-            m1.metric("Single Stump Error", f"{err_stump_test:.3f}", help="Barely better than 0.50 random guessing (Slide 290: 0.458).")
-            m2.metric(f"Deep Tree ({n_deep_leaves} leaves)", f"{err_deep_test:.3f}", help="Slide 290: 0.247.")
+            m1.metric("Single Stump Error", f"{err_stump_test:.3f}", help="Barely better than 0.50 random guessing.")
+            m2.metric(f"Deep Tree ({n_deep_leaves} leaves)", f"{err_deep_test:.3f}", help="Complex unpruned tree error.")
             m3.metric(f"AdaBoost (M={max_iters})", f"{final_ada_err:.3f}", delta=f"{(final_ada_err - err_deep_test)*100:.1f}% vs Deep", delta_color="inverse")
             m4.metric("Error Reduction", f"{(1.0 - final_ada_err / err_stump_test)*100:.0f}%")
 
-        tabs_list = ["📉 Test Error vs Boosting Iterations M (Slide 290 Replica)", "📊 Final Model Benchmark Summary"]
+        tabs_list = ["📉 Test Error vs Boosting Iterations M", "📊 Final Model Benchmark Summary"]
         if is_2d:
             tabs_list.insert(1, "🗺️ 2D Decision Boundaries (Stump vs Deep vs AdaBoost)")
 
         tabs = st.tabs(tabs_list)
 
         with tabs[0]:
-            st.markdown(f"##### 📉 Test Error Convergence vs Iterations M (Replicating Slide 290)")
+            st.markdown(f"##### 📉 Test Error Convergence vs Iterations M")
 
             fig_curve = go.Figure()
             m_axis = np.arange(1, len(test_errors_ada) + 1)
@@ -219,7 +219,7 @@ def render():
             )
 
             st.plotly_chart(fig_curve, width="stretch", key="bm_fig_curve")
-            st.caption("Notice how AdaBoost of trivial 1-split stumps plunges well beneath the complex deep tree, matching Slide 290.")
+            st.caption("Notice how AdaBoost of trivial 1-split stumps plunges well beneath the complex deep tree.")
 
         if is_2d:
             with tabs[1]:

@@ -1,6 +1,5 @@
 """
 Module Page: Support Vector Machines (Linear & Foundations)
-ISYE-7406 Data Mining & Statistical Learning (Slides 210-226)
 Senior Data Presentation Architecture: 6 Dedicated Conceptual Tabs, Each with Full-Block Visualizations.
 """
 
@@ -17,14 +16,14 @@ from .tiles import (
 
 def render():
     st.title("Support Vector Machines: Linear Hyperplanes & Formulation")
-    st.caption("ISYE-7406 Slide Deck Module | Slides 210–226 | Real-Time Interactive Visual Sandbox")
+    st.caption("Maximal Margin Classifiers, Dual Formulations & Optimization Mechanics")
 
     tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
         "📐 1. Hyperplane Geometry",
         "⚔️ 2. OLS vs Perceptron vs SVM",
         "📏 3. Hard-Margin OSH",
         "📉 4. Soft-Margin & Slack (ξ)",
-        "🎚️ 5. Cost Parameter C (Slide 226)",
+        "🎚️ 5. Cost Parameter C",
         "🚀 6. Feature Space Lift (RKHS)",
     ])
 

@@ -35,7 +35,7 @@ def render():
                 help="Distance between the two class centers",
             )
 
-            st.markdown("##### 🧪 Sparsity Experiment (Slide 224)")
+            st.markdown("##### 🧪 Dual Sparsity Experiment")
             perturb_non_sv = st.slider(
                 "Perturb Non-SVs (Δx)",
                 min_value=-2.0,

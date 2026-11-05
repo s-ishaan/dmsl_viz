@@ -40,7 +40,7 @@ def render():
                 ["Outlier Challenge (Masking)", "Linearly Separable Blobs", "Overlapping Blobs"],
                 index=0,
                 key="pvs_dataset",
-                help="Outlier Challenge recreates Slide 213: a far point on the correct side breaks Least Squares!",
+                help="Outlier Challenge: a far point on the correct side breaks Least Squares due to squared error loss!",
             )
 
             outlier_dist = st.slider(
@@ -108,7 +108,7 @@ def render():
         # Masking visual alert if relevant
         if dataset_name == "Outlier Challenge (Masking)" and errors_ls > 0:
             st.info(
-                f"💡 **Masking Effect in Action (Slide 213)**: The far outlier pulls the OLS plane, causing **{errors_ls} misclassification(s)** "
+                f"💡 **Masking Effect in Action**: The far outlier pulls the OLS plane, causing **{errors_ls} misclassification(s)** "
                 "on points that are easily separated by the SVM optimal margin.",
                 icon="⚠️",
             )

@@ -14,20 +14,17 @@ from modules.trees_and_boosting.page import render as render_trees_and_boosting
 REGISTRY: Dict[str, Dict[str, Any]] = {
     "trees_and_boosting": {
         "title": "Decision Trees, Pruning & AdaBoost Ensembles",
-        "course": "ISYE-7406 Data Mining & Statistical Learning",
-        "slides_ref": "Slides 260–289",
+        "topic": "Recursive Partitioning, Pruning & Committee Methods",
         "render_fn": render_trees_and_boosting,
     },
     "svm_kernels": {
         "title": "Support Vector Machines (Part 2: Kernels & RKHS)",
-        "course": "ISYE-7406 Data Mining & Statistical Learning",
-        "slides_ref": "Slides 227–259",
+        "topic": "Non-linear Boundaries, Mercer RKHS & Loss Landscapes",
         "render_fn": render_svm_kernels,
     },
     "svm_linear": {
         "title": "Support Vector Machines (Part 1: Linear & OSH)",
-        "course": "ISYE-7406 Data Mining & Statistical Learning",
-        "slides_ref": "Slides 210–226",
+        "topic": "Maximal Margin Classifiers & Dual Optimization",
         "render_fn": render_svm_linear,
     },
 }
