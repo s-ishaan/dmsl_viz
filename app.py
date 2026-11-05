@@ -184,19 +184,19 @@ st.markdown(
     @media (max-width: 768px) {
         /* Maximize usable canvas width on small screens */
         .block-container {
-            padding-left: 0.75rem !important;
-            padding-right: 0.75rem !important;
-            padding-top: 1.0rem !important;
+            padding-left: 0.6rem !important;
+            padding-right: 0.6rem !important;
+            padding-top: 0.8rem !important;
             padding-bottom: 2.0rem !important;
         }
 
         /* Responsive typography */
         h1 {
-            font-size: 1.35rem !important;
+            font-size: 1.30rem !important;
             line-height: 1.25 !important;
         }
         h4 {
-            font-size: 0.92rem !important;
+            font-size: 0.90rem !important;
         }
         h5 {
             font-size: 0.85rem !important;
@@ -206,16 +206,48 @@ st.markdown(
         div[data-testid="stVerticalBlockBorderWrapper"] {
             padding: 8px !important;
             border-radius: 8px !important;
+            margin-bottom: 8px !important;
         }
 
-        /* 2x2 wrapping grid for 4-column metric rows */
-        div[data-testid="stHorizontalBlock"]:has(div[data-testid="stMetric"]) {
+        /* 1. MAIN LAYOUT COLUMNS: Stack vertically full-width (100%)
+           Guarantees that control panels and graph containers NEVER squeeze
+           side-by-side into narrow unreadable columns on mobile screens. */
+        div[data-testid="stHorizontalBlock"] {
+            flex-direction: column !important;
+            flex-wrap: wrap !important;
+            gap: 10px !important;
+        }
+        div[data-testid="stHorizontalBlock"] > div[data-testid="column"] {
+            width: 100% !important;
+            min-width: 100% !important;
+            max-width: 100% !important;
+            flex: 1 1 100% !important;
+        }
+
+        /* Reorder so Visualization column (col_plot) appears first at the top,
+           and the Control Knobs column (col_ctrl) sits directly below the plot.
+           This allows users to inspect the graph immediately upon opening a tab
+           and tweak controls with their thumb while viewing the plot above. */
+        div[data-testid="stHorizontalBlock"] > div[data-testid="column"]:has(div[data-testid="stVerticalBlockBorderWrapper"]:has(div[data-testid="stSlider"], div[data-testid="stSelectbox"])) {
+            order: 2 !important;
+        }
+        div[data-testid="stHorizontalBlock"] > div[data-testid="column"]:not(:has(div[data-testid="stVerticalBlockBorderWrapper"]:has(div[data-testid="stSlider"], div[data-testid="stSelectbox"]))) {
+            order: 1 !important;
+        }
+
+        /* 2. METRICS ROW: Keep strictly 2x2 wrapping grid for KPI numbers
+           The metrics horizontal block contains stMetric and NO nested horizontal blocks. */
+        div[data-testid="stHorizontalBlock"]:has(div[data-testid="stMetric"]):not(:has(div[data-testid="stHorizontalBlock"])) {
+            flex-direction: row !important;
             flex-wrap: wrap !important;
             gap: 6px !important;
         }
-        div[data-testid="stHorizontalBlock"]:has(div[data-testid="stMetric"]) > div {
-            flex: 1 1 calc(50% - 6px) !important;
-            min-width: calc(50% - 6px) !important;
+        div[data-testid="stHorizontalBlock"]:has(div[data-testid="stMetric"]):not(:has(div[data-testid="stHorizontalBlock"])) > div[data-testid="column"] {
+            order: 0 !important;
+            width: calc(50% - 4px) !important;
+            min-width: calc(50% - 4px) !important;
+            max-width: calc(50% - 4px) !important;
+            flex: 1 1 calc(50% - 4px) !important;
         }
         div[data-testid="stMetric"] {
             padding: 6px 8px !important;
@@ -236,6 +268,14 @@ st.markdown(
         button[data-baseweb="tab"] {
             font-size: 0.78rem !important;
             padding: 5px 10px !important;
+        }
+
+        /* Full width for plotly chart canvas */
+        div[data-testid="stPlotlyChart"],
+        .js-plotly-plot,
+        .plot-container {
+            width: 100% !important;
+            max-width: 100% !important;
         }
     }
     </style>

@@ -166,7 +166,7 @@ def render():
             fig_imp.add_trace(go.Scatter(x=[p_probe], y=[val_misclass], mode="markers", marker=dict(size=9, color="#F59E0B"), showlegend=False, hoverinfo="skip"))
 
             fig_imp.update_layout(
-                height=460,
+                height=420,
                 paper_bgcolor=BG_PAPER,
                 plot_bgcolor=BG_PLOT,
                 xaxis=dict(
@@ -174,23 +174,23 @@ def render():
                     range=[-0.02, 1.02],
                     gridcolor="#1E293B",
                     zerolinecolor="#334155",
-                    tickfont=dict(color="#94A3B8"),
+                    tickfont=dict(color="#94A3B8", size=9.5),
                 ),
                 yaxis=dict(
                     title=dict(text="Node Impurity Index", font=dict(color="#CBD5E1", size=11)),
                     range=[-0.02, 0.55],
                     gridcolor="#1E293B",
                     zerolinecolor="#334155",
-                    tickfont=dict(color="#94A3B8"),
+                    tickfont=dict(color="#94A3B8", size=9.5),
                 ),
-                margin=dict(l=45, r=25, t=15, b=75),
+                margin=dict(l=40, r=20, t=15, b=85),
                 legend=dict(
                     orientation="h",
                     yanchor="top",
                     y=-0.18,
                     xanchor="center",
                     x=0.5,
-                    font=dict(color="#CBD5E1", size=10),
+                    font=dict(color="#CBD5E1", size=9.5),
                     bgcolor="rgba(15, 23, 42, 0.75)",
                     bordercolor="#334155",
                     borderwidth=1,
@@ -202,7 +202,7 @@ def render():
         with tab_purity:
             st.markdown(f"##### 🎯 Decision Space Partitioned & Shaded by Leaf Purity max_k(p̂_jk) ({criterion.upper()})")
 
-            fig_pur = get_base_2d_figure((x_min, x_max), (y_min, y_max), title="", height=460)
+            fig_pur = get_base_2d_figure((x_min, x_max), (y_min, y_max), title="", height=420)
 
             # Heatmap of purity
             fig_pur.add_trace(
