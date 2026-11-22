@@ -155,3 +155,49 @@ def get_2d_regression_dataset(
     return X, y
 
 
+def get_multidimensional_dataset(
+    n_samples: int = 300,
+    p: int = 10,
+    n_informative: int = 4,
+    noise_ratio: float = 0.1,
+    random_state: int = 42,
+) -> Tuple[np.ndarray, np.ndarray]:
+    """
+    Generate p-dimensional synthetic classification dataset for Random Forest and Benchmarks.
+    Returns: X (N, p), y (N,) with classes {-1, +1}
+    """
+    from sklearn.datasets import make_classification
+    n_informative = min(n_informative, p)
+    n_redundant = min(max(0, p - n_informative - 2), 2) if p > n_informative else 0
+    X, y = make_classification(
+        n_samples=n_samples,
+        n_features=p,
+        n_informative=n_informative,
+        n_redundant=n_redundant,
+        n_repeated=0,
+        n_classes=2,
+        flip_y=noise_ratio,
+        class_sep=1.2,
+        random_state=random_state,
+    )
+    y = np.where(y == 0, -1, 1)
+    return X, y
+
+
+def get_swiss_roll_3d(
+    n_samples: int = 400,
+    noise: float = 0.05,
+    random_state: int = 42,
+) -> Tuple[np.ndarray, np.ndarray]:
+    """
+    Generate 3D Swiss Roll manifold data for non-linear PCA / autoencoder exploration.
+    Returns: X (N, 3), t (N,) continuous color coordinate
+    """
+    from sklearn.datasets import make_swiss_roll
+    X, t = make_swiss_roll(n_samples=n_samples, noise=noise, random_state=random_state)
+    # Center and normalize
+    X = (X - X.mean(axis=0)) / X.std(axis=0)
+    return X, t
+
+
+

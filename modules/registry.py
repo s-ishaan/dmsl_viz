@@ -7,11 +7,23 @@ from typing import Dict, Any, Callable
 from modules.svm_linear import render as render_svm_linear
 from modules.svm_kernels.page import render as render_svm_kernels
 from modules.trees_and_boosting.page import render as render_trees_and_boosting
+from modules.random_forests_and_boosting.page import render as render_rf_and_boosting
+from modules.neural_networks.page import render as render_neural_networks
 
 
 # Registered lecture modules
 # Future decks dropped into workspace will be added here
 REGISTRY: Dict[str, Dict[str, Any]] = {
+    "neural_networks": {
+        "title": "Neural Networks & Deep Learning Foundations",
+        "topic": "Architectures, Activation Dynamics, Optimization & Autoencoders",
+        "render_fn": render_neural_networks,
+    },
+    "random_forests_and_boosting": {
+        "title": "Random Forests & Gradient Tree Boosting (MART)",
+        "topic": "MART Residual Boosting, Variance Decomposition & De-correlated Ensembles",
+        "render_fn": render_rf_and_boosting,
+    },
     "trees_and_boosting": {
         "title": "Decision Trees, Pruning & AdaBoost Ensembles",
         "topic": "Recursive Partitioning, Pruning & Committee Methods",
