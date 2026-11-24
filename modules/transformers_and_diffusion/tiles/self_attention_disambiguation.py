@@ -176,14 +176,14 @@ def render():
         # Top KPIs
         m1, m2, m3, m4 = st.columns(4)
         m1.metric("Query Token", f"'{query_token}'")
-        m2.metric("Primary Attention", f"'{top_cand_word}'", f"{top_cand_pct:.1f}% weight")
-        m3.metric("'animal' Attention", f"{animal_pct:.1f}%")
-        m4.metric("'street' Attention", f"{street_pct:.1f}%")
+        m2.metric("Primary Focus", f"'{top_cand_word}'", f"{top_cand_pct:.0f}%")
+        m3.metric("Animal Weight", f"{animal_pct:.1f}%")
+        m4.metric("Street Weight", f"{street_pct:.1f}%")
 
         tab_tree, tab_bars, tab_embedding_shift = st.tabs([
-            "🌳 Attention Flow Tree Diagram",
-            "📊 Attention Distribution Profile",
-            "📍 Contextual Embedding Shift",
+            "🌳 Attention Tree",
+            "📊 Attention Weights",
+            "📍 Latent Shift",
         ])
 
         with tab_tree:

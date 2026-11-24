@@ -162,15 +162,15 @@ def render():
     with col_plot:
         # Top KPIs
         m1, m2, m3, m4 = st.columns(4)
-        m1.metric("Current Timestep", f"t = {timestep_t} / {total_T}")
-        m2.metric("Remaining Signal √ᾱ_t", f"{np.sqrt(alpha_bar_t):.3f}", f"{signal_pct:.1f}% power")
-        m3.metric("Added Noise σ_t", f"{sigma_t:.3f}", f"{noise_pct:.1f}% power")
-        m4.metric("Log10 SNR(t)", f"{log_snr_t:.2f} dB", help="Signal-to-Noise Ratio: ᾱ_t / (1 - ᾱ_t)")
+        m1.metric("Timestep", f"t = {timestep_t}/{total_T}")
+        m2.metric("Signal √ᾱ_t", f"{np.sqrt(alpha_bar_t):.3f}", f"{signal_pct:.0f}%")
+        m3.metric("Noise σ_t", f"{sigma_t:.3f}", f"{noise_pct:.0f}%")
+        m4.metric("Log SNR", f"{log_snr_t:.2f} dB")
 
         tab_cloud, tab_curves, tab_image_noising = st.tabs([
-            "🌫️ 2D Particle Diffusion Cloud x_t",
-            "📈 Variance Schedules & SNR Dynamics",
-            "🖼️ Pixel Grid Noising Simulation",
+            "🌫️ Particle Cloud",
+            "📈 Schedules & SNR",
+            "🖼️ Pixel Diffusion",
         ])
 
         with tab_cloud:

@@ -200,15 +200,15 @@ def render():
     with col_plot:
         # Top KPIs
         m1, m2, m3, m4 = st.columns(4)
-        m1.metric("Predicted Analogy", f"{best_word.capitalize()}", f"{'Target Match! 🎉' if best_word == w_target else 'In Progress'}")
-        m2.metric("Similarity Score", score_label)
-        m3.metric("Semantic Dim D", "D = 256 → 3D")
-        m4.metric("Extracted Tokens", f"{len(token_ids)} Tokens")
+        m1.metric("Analogy Match", best_word.capitalize(), "Target Match" if best_word == w_target else "Offset")
+        m2.metric("Similarity", f"{best_score:.3f}", dist_metric.split()[0])
+        m3.metric("Semantic Dim", "D = 256")
+        m4.metric("Token Count", f"{len(token_ids)}")
 
         tab_vector_space, tab_positional, tab_tokenizer = st.tabs([
-            "🌐 3D Semantic Vector Space & Analogies",
-            "📐 Positional Encoding Harmonic Waves",
-            "🔤 Subword Tokenizer & Integer IDs",
+            "🌐 3D Vector Space",
+            "📐 Positional Encodings",
+            "🔤 Tokenizer & IDs",
         ])
 
         with tab_vector_space:
@@ -344,12 +344,7 @@ def render():
             chips_html = '<div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">'
             for idx, (tok, tid) in enumerate(zip(token_displays, token_ids)):
                 color = token_palette[idx % len(token_palette)]
-                chips_html += f"""
-                <div style="background-color: {color}22; border: 1px solid {color}; border-radius: 6px; padding: 6px 12px; text-align: center;">
-                    <div style="font-weight: 700; color: #F8FAFC; font-size: 1.05rem;">{tok}</div>
-                    <div style="font-size: 0.75rem; color: {color}; margin-top: 2px;">ID: {tid}</div>
-                </div>
-                """
+                chips_html += f'<div style="background-color: {color}22; border: 1px solid {color}; border-radius: 6px; padding: 6px 12px; text-align: center;"><div style="font-weight: 700; color: #F8FAFC; font-size: 1.05rem;">{tok}</div><div style="font-size: 0.75rem; color: {color}; margin-top: 2px;">ID: {tid}</div></div>'
             chips_html += '</div>'
             st.markdown(chips_html, unsafe_allow_html=True)
 

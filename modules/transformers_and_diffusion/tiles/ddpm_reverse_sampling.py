@@ -160,15 +160,15 @@ def render():
     with col_plot:
         # Top KPIs
         m1, m2, m3, m4 = st.columns(4)
-        m1.metric("Reverse Step", f"t = {rev_t} of {total_T}")
-        m2.metric("Sampling Method", "DDPM (Stochastic)" if "Stochastic" in sampling_mode else "DDIM (ODE)")
-        m3.metric("Noise Pred MSE", f"{pred_mse:.4f}", help="||ϵ - ϵ_θ(x_t, t)||² matching the simplified DDPM objective")
-        m4.metric("Cohesion Radius", f"{mean_disp:.2f}")
+        m1.metric("Reverse Step", f"t = {rev_t}/{total_T}")
+        m2.metric("Sampling", "DDPM" if "Stochastic" in sampling_mode else "DDIM")
+        m3.metric("Noise MSE", f"{pred_mse:.4f}")
+        m4.metric("Cohesion", f"{mean_disp:.2f}")
 
         tab_state, tab_vector_field, tab_timeline = st.tabs([
-            "🔄 Denoised Particle State x_t",
-            "🧭 Score & Denoising Vector Field",
-            "🎞️ Step-by-Step Denoising Timeline",
+            "🔄 Denoised Particles",
+            "🧭 Denoising Field",
+            "🎞️ Denoising Filmstrip",
         ])
 
         with tab_state:

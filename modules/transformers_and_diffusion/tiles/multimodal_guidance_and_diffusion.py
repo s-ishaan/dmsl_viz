@@ -125,15 +125,15 @@ def render():
     with col_plot:
         # Top KPIs
         m1, m2, m3, m4 = st.columns(4)
-        m1.metric("Guidance Scale s", f"s = {cfg_scale:.1f}", "Standard (s=1)" if cfg_scale == 1.0 else ("CFG Boost" if cfg_scale > 1.0 else "Uncond"))
-        m2.metric("Prompt Alignment", f"{prompt_fidelity:.1f}%")
-        m3.metric("Operating Domain", "Latent (64×)" if "Latent" in diffusion_space else "Pixel (1×)")
-        m4.metric("Target Mode", active_key)
+        m1.metric("Guidance s", f"s = {cfg_scale:.1f}", "CFG Boost" if cfg_scale > 1.0 else "Normal")
+        m2.metric("Alignment", f"{prompt_fidelity:.1f}%")
+        m3.metric("Domain", "Latent (64×)" if "Latent" in diffusion_space else "Pixel (1×)")
+        m4.metric("Target Mode", active_key.replace("Prompt ", "Mode "))
 
         tab_cfg_plane, tab_pipeline_diag, tab_trilemma = st.tabs([
-            "🧭 Classifier-Free Guidance Vector Trajectory",
-            "🏗️ Stable Diffusion & Latent Pipeline",
-            "⚖️ Generative Trilemma & Architecture Arena",
+            "🧭 CFG Trajectory",
+            "🏗️ Latent Pipeline",
+            "⚖️ Generative Trilemma",
         ])
 
         with tab_cfg_plane:

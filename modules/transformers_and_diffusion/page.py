@@ -22,12 +22,12 @@ def render():
     st.caption("Attention Architectures, Denoising Probabilistic Diffusion & Multimodal Guidance")
 
     tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
-        "🔤 1. Tokenization & Semantic Vector Spaces",
-        "🎯 2. Self-Attention & Contextual Disambiguation",
-        "⚡ 3. Scaled Dot-Product & Multi-Head Attention",
-        "🌫️ 4. Forward Diffusion & Reparameterization",
-        "🔄 5. DDPM Reverse Denoising & Sampling",
-        "🎨 6. Multimodal Conditioning & Diffusion Guidance",
+        "🔤 1. Tokenization & Embeddings",
+        "🎯 2. Self-Attention & Context",
+        "⚡ 3. Multi-Head Attention",
+        "🌫️ 4. Forward Diffusion",
+        "🔄 5. DDPM Reverse Sampling",
+        "🎨 6. Multimodal Guidance",
     ])
 
     with tab1:

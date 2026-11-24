@@ -149,15 +149,15 @@ def render():
     with col_plot:
         # Top KPIs
         m1, m2, m3, m4 = st.columns(4)
-        m1.metric("Sequence Length N", f"{n_tokens} Tokens")
-        m2.metric("Peak Attention Weight", f"{max_attn_weight * 100:.1f}%")
-        m3.metric("Attention Entropy", f"{mean_entropy:.2f} nats", help="Low entropy indicates sharp focused attention; high entropy indicates diffuse attention.")
-        m4.metric("Scaling Factor", f"1 / √{d_k} = {1.0/np.sqrt(d_k):.3f}" if enable_scaling else "Disabled (1.00)")
+        m1.metric("Sequence Length", f"{n_tokens} Tokens")
+        m2.metric("Peak Attention", f"{max_attn_weight * 100:.1f}%")
+        m3.metric("Entropy", f"{mean_entropy:.2f} nats", help="Low entropy indicates sharp focused attention; high entropy indicates diffuse attention.")
+        m4.metric("Scaling", f"1/√{d_k} = {1.0/np.sqrt(d_k):.2f}" if enable_scaling else "None")
 
         tab_heatmap, tab_pipeline, tab_multi_compare = st.tabs([
-            "🔥 Attention Weight Heatmap A",
-            "🧮 Full Matrix Algebra Pipeline",
-            "👥 Multi-Head Subspace Comparison",
+            "🔥 Attention Heatmap",
+            "🧮 Matrix Pipeline",
+            "👥 Multi-Head Heads",
         ])
 
         with tab_heatmap:
