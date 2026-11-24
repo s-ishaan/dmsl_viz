@@ -4,6 +4,7 @@ Dynamically manages and discovers lecture deck visualizers.
 """
 
 from typing import Dict, Any, Callable
+from modules.transformers_and_diffusion.page import render as render_transformers_and_diffusion
 from modules.pca_and_dimension_reduction.page import render as render_pca_and_dimension_reduction
 from modules.neural_networks.page import render as render_neural_networks
 from modules.random_forests_and_boosting.page import render as render_rf_and_boosting
@@ -15,6 +16,11 @@ from modules.svm_linear import render as render_svm_linear
 # Registered lecture modules
 # Future decks dropped into workspace will be added here
 REGISTRY: Dict[str, Dict[str, Any]] = {
+    "transformers_and_diffusion": {
+        "title": "Transformers & Diffusion Generative Models",
+        "topic": "Attention Architectures, DDPM Probabilistic Diffusion & Multimodal Guidance",
+        "render_fn": render_transformers_and_diffusion,
+    },
     "pca_and_dimension_reduction": {
         "title": "Principal Component Analysis & Autoencoders",
         "topic": "Spectral Projections, Manifold Collapse & Intrinsic Dimension",
