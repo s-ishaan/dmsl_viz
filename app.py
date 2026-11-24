@@ -228,10 +228,10 @@ st.markdown(
            and the Control Knobs column (col_ctrl) sits directly below the plot.
            This allows users to inspect the graph immediately upon opening a tab
            and tweak controls with their thumb while viewing the plot above. */
-        div[data-testid="stHorizontalBlock"] > div[data-testid="column"]:has(div[data-testid="stVerticalBlockBorderWrapper"]:has(div[data-testid="stSlider"], div[data-testid="stSelectbox"])) {
+        div[data-testid="stHorizontalBlock"] > div[data-testid="column"]:has(div[data-testid="stVerticalBlockBorderWrapper"]:has(div[data-testid="stSlider"], div[data-testid="stSelectbox"], div[data-testid="stRadio"], div[data-testid="stCheckbox"])) {
             order: 2 !important;
         }
-        div[data-testid="stHorizontalBlock"] > div[data-testid="column"]:not(:has(div[data-testid="stVerticalBlockBorderWrapper"]:has(div[data-testid="stSlider"], div[data-testid="stSelectbox"]))) {
+        div[data-testid="stHorizontalBlock"] > div[data-testid="column"]:not(:has(div[data-testid="stVerticalBlockBorderWrapper"]:has(div[data-testid="stSlider"], div[data-testid="stSelectbox"], div[data-testid="stRadio"], div[data-testid="stCheckbox"]))) {
             order: 1 !important;
         }
 

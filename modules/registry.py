@@ -4,16 +4,22 @@ Dynamically manages and discovers lecture deck visualizers.
 """
 
 from typing import Dict, Any, Callable
-from modules.svm_linear import render as render_svm_linear
-from modules.svm_kernels.page import render as render_svm_kernels
-from modules.trees_and_boosting.page import render as render_trees_and_boosting
-from modules.random_forests_and_boosting.page import render as render_rf_and_boosting
+from modules.pca_and_dimension_reduction.page import render as render_pca_and_dimension_reduction
 from modules.neural_networks.page import render as render_neural_networks
+from modules.random_forests_and_boosting.page import render as render_rf_and_boosting
+from modules.trees_and_boosting.page import render as render_trees_and_boosting
+from modules.svm_kernels.page import render as render_svm_kernels
+from modules.svm_linear import render as render_svm_linear
 
 
 # Registered lecture modules
 # Future decks dropped into workspace will be added here
 REGISTRY: Dict[str, Dict[str, Any]] = {
+    "pca_and_dimension_reduction": {
+        "title": "Principal Component Analysis & Autoencoders",
+        "topic": "Spectral Projections, Manifold Collapse & Intrinsic Dimension",
+        "render_fn": render_pca_and_dimension_reduction,
+    },
     "neural_networks": {
         "title": "Neural Networks & Deep Learning Foundations",
         "topic": "Architectures, Activation Dynamics, Optimization & Autoencoders",
